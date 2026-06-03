@@ -18,7 +18,7 @@ function configureApp(app) {
 
 // Use CORS
 // Enabled for all origins
-app.use(cors());
+//app.use(cors());
 // Only requests from example.com
 // app.use(cors(corsOptions));
 
@@ -29,7 +29,7 @@ app.use(cors());
  * Create Write Stream: fs.createWriteStream() is used to create a stream that Morgan will write log data to. The 'a' flag ensures that logs are appended to the file (access.log) instead of overwriting it.
  */
 
-/*
+
 
 // CORS Configuration with Multiple Origins and Regex Support
 const allowedOrigins = [
@@ -57,7 +57,7 @@ app.use(cors({
   credentials: true,
 }));
 
-*/
+
 
 var accessLogStream = fs.createWriteStream(
   //! The 'path.join' method joins all given path segments together using the platform-specific separator
