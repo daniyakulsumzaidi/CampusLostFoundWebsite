@@ -25,11 +25,14 @@ configureApp(app);
 
 async function bootstrap() {
   try {
-    await mongoose.connect(
-      process.env.DATABASE_URL,
-      { dbName: process.env.DATABASE_NAME }
-    );
-    console.log("Connnected To MongoDB");
+    await mongoose.connect(process.env.DATABASE_URL, {
+      dbName: process.env.DATABASE_NAME,
+    });
+
+    console.log("Connected To MongoDB");
+
+    // Create default admin if it doesn't exist
+    await seedAdmin();
 
     app.listen(port, () => {
       console.log(`App listening on port ${port}`);
@@ -37,14 +40,10 @@ async function bootstrap() {
 
   } catch (error) {
     console.error(error);
-    /** An exit code of 1 typically indicates that there was an error or abnormal termination of the program, which is often used to signal failure in scenarios where the program encounters critical issues that prevent normal operation. */
     process.exit(1);
   }
 }
 
 bootstrap();
 
-//to create a default admin user if not exists
-mongoose.connect(process.env.DATABASE_URL).then(async () => {
-  await seedAdmin(); // ← runs once, skips if admin exists
-});
+
