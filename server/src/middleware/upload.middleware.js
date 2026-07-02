@@ -3,7 +3,7 @@ const multer = require("multer");
 const path = require("path");
 
 const storage = multer.diskStorage({
-  destination: (req, file, cb) => cb(null, "D:/React/CampusLostFound/client/public/uploads/"),
+  destination: (req, file, cb) => cb(null, "C:\Users\DELL\OneDrive\Desktop\project\CampusLostFound\client\public"),
   filename: (req, file, cb) => {
     const unique = `${Date.now()}-${Math.round(Math.random() * 1e9)}`;
     cb(null, unique + path.extname(file.originalname));
